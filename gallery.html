@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | NatureBloom</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f5f8f1;color:#263d2e}
+header{background:#174b35;padding:20px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.logo{font-size:26px;color:white;font-weight:bold}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:bold}
+nav a:hover{color:#b9ed9c}
+.hero{text-align:center;padding:65px 7%;background:#dcebd7}
+.hero h1{font-size:clamp(38px,6vw,56px);color:#174b35;margin-bottom:15px}
+.hero p{max-width:700px;margin:auto;line-height:1.8}
+section{padding:50px 7%}
+.filters{text-align:center;margin-bottom:30px}
+.filters button{border:0;padding:11px 20px;margin:5px;border-radius:25px;background:#dcebd7;color:#174b35;font-weight:bold;cursor:pointer}
+.filters button:hover,.filters button.active{background:#174b35;color:white}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.item{height:270px;position:relative;overflow:hidden;border-radius:16px}
+.item img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.item:hover img{transform:scale(1.08)}
+.caption{position:absolute;bottom:0;left:0;width:100%;padding:18px;color:white;background:linear-gradient(transparent,#000000bd);font-size:20px;font-weight:bold}
+footer{background:#102e24;color:white;text-align:center;padding:25px}
+@media(max-width:800px){.gallery{grid-template-columns:repeat(2,1fr)}.item{height:230px}}
+@media(max-width:550px){header{justify-content:center;gap:15px}nav{justify-content:center;gap:12px}.gallery{grid-template-columns:1fr}.item{height:260px}.hero{padding:45px 6%}section{padding:35px 6%}}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">🌿 NatureBloom</div>
+ <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a><a href="login.html">Login</a></nav>
+</header>
+
+<div class="hero">
+ <h1>Nature's Beautiful Gallery</h1>
+ <p>Explore wonderful landscapes, colourful flowers, peaceful waters and the amazing beauty of our planet.</p>
+</div>
+
+<section>
+ <div class="filters">
+  <button class="active" onclick="filterGallery('all',this)">All</button>
+  <button onclick="filterGallery('forest',this)">Forests</button>
+  <button onclick="filterGallery('mountain',this)">Mountains</button>
+  <button onclick="filterGallery('water',this)">Water</button>
+  <button onclick="filterGallery('flowers',this)">Flowers</button>
+ </div>
+ <div class="gallery">
+  <div class="item" data-category="forest"><img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80" alt="Green forest"><div class="caption">Green Forests</div></div>
+  <div class="item" data-category="mountain"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80" alt="Mountain peaks"><div class="caption">Majestic Mountains</div></div>
+  <div class="item" data-category="water"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80" alt="Mountain lake"><div class="caption">Peaceful Lakes</div></div>
+  <div class="item" data-category="flowers"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80" alt="Colourful flowers"><div class="caption">Colourful Flowers</div></div>
+  <div class="item" data-category="water"><img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80" alt="Ocean waves"><div class="caption">Ocean Waves</div></div>
+  <div class="item" data-category="forest"><img src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=80" alt="Tree canopy"><div class="caption">Tree Canopies</div></div>
+  <div class="item" data-category="mountain"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Wide landscape"><div class="caption">Open Landscapes</div></div>
+  <div class="item" data-category="flowers"><img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=80" alt="Fresh green leaves"><div class="caption">Fresh Greenery</div></div>
+  <div class="item" data-category="water"><img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=900&q=80" alt="Still waters"><div class="caption">Quiet Reflections</div></div>
+ </div>
+</section>
+
+<footer><p>© 2026 NatureBloom | Every picture tells a natural story</p></footer>
+<script>
+function filterGallery(category,button){
+ document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));
+ button.classList.add('active');
+ document.querySelectorAll('.item').forEach(item=>{
+  item.style.display=(category==='all'||item.dataset.category===category)?'block':'none';
+ });
+}
+</script>
+</body>
+</html>
+```

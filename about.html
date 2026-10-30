@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | NatureBloom</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f5f8f1;color:#263d2e}
+header{background:#174b35;padding:20px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.logo{font-size:26px;font-weight:bold;color:white}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:bold}
+nav a:hover{color:#b9ed9c}
+.hero{text-align:center;padding:75px 7%;background:linear-gradient(#123b2c80,#123b2c80),url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80') center/cover;color:white}
+.hero h1{font-size:clamp(38px,6vw,60px);margin-bottom:15px}
+.hero p{max-width:700px;margin:auto;line-height:1.8;font-size:18px}
+section{padding:60px 8%}
+h2{font-size:34px;color:#174b35;margin-bottom:18px}
+p{line-height:1.8;color:#617267}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.about-grid img{width:100%;height:390px;object-fit:cover;border-radius:20px}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+.value{background:white;padding:28px;border-radius:16px;box-shadow:0 5px 20px #00000010}
+.value h3{color:#174b35;margin-bottom:10px}
+footer{background:#102e24;color:white;text-align:center;padding:25px}
+footer p{color:white}
+@media(max-width:750px){.about-grid,.values{grid-template-columns:1fr 1fr}.about-grid img{height:300px}}
+@media(max-width:520px){header{justify-content:center;gap:15px}nav{justify-content:center;gap:12px}.about-grid,.values{grid-template-columns:1fr}.hero{padding:55px 6%}section{padding:40px 6%}h2{font-size:28px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">🌿 NatureBloom</div>
+ <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a><a href="login.html">Login</a></nav>
+</header>
+
+<div class="hero">
+ <h1>About NatureBloom</h1>
+ <p>We believe nature is our greatest treasure. Our mission is to inspire people to explore, appreciate and protect the beautiful world around them.</p>
+</div>
+
+<section>
+ <div class="about-grid">
+  <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1000&q=80" alt="Wild deer in nature">
+  <div>
+   <h2>Our Story</h2>
+   <p>NatureBloom was created for people who love green forests, colourful flowers, wildlife, oceans and breathtaking landscapes.</p>
+   <p>We want to encourage everyone to spend more time outdoors, learn about our environment and make small changes that help protect our planet.</p>
+   <p>From appreciating a beautiful sunrise to planting a tree, every little action can make a difference.</p>
+  </div>
+ </div>
+</section>
+
+<section style="background:#e8f2e6">
+ <h2 style="text-align:center">Our Core Values</h2>
+ <p style="text-align:center">The principles that guide everything we do.</p>
+ <div class="values">
+  <div class="value"><h3>🌍 Protect</h3><p>Respect our planet and help preserve natural resources for future generations.</p></div>
+  <div class="value"><h3>🌱 Inspire</h3><p>Encourage people to explore nature and discover its incredible beauty.</p></div>
+  <div class="value"><h3>🤝 Connect</h3><p>Bring nature lovers together to share ideas, knowledge and positive actions.</p></div>
+ </div>
+</section>
+
+<footer><p>© 2026 NatureBloom | Love Nature, Live Green</p></footer>
+</body>
+</html>
+```

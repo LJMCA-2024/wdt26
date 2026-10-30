@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login & Register | NatureBloom</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#dcebd7,#f7f9f3);color:#263d2e;min-height:100vh}
+header{background:#174b35;padding:20px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.logo{font-size:26px;color:white;font-weight:bold}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:bold}
+nav a:hover{color:#b9ed9c}
+.container{min-height:75vh;display:flex;align-items:center;justify-content:center;padding:45px 15px}
+.box{width:100%;max-width:450px;background:white;border-radius:22px;padding:32px;box-shadow:0 10px 35px #00000018}
+.box h1{text-align:center;color:#174b35;margin-bottom:10px;font-size:32px}
+.subtitle{text-align:center;color:#718075;margin-bottom:25px;line-height:1.6}
+.tabs{display:flex;background:#e8f2e6;padding:5px;border-radius:30px;margin-bottom:25px}
+.tabs button{width:50%;padding:12px;border:0;background:transparent;border-radius:25px;color:#174b35;font-weight:bold;cursor:pointer}
+.tabs button.active{background:#174b35;color:white}
+.form{display:none}
+.form.active{display:block}
+label{display:block;font-weight:bold;margin:14px 0 7px}
+input{width:100%;padding:13px;border:1px solid #cbd8cd;border-radius:9px;font:inherit}
+input:focus{outline:2px solid #9ecb8a}
+.submit{width:100%;padding:14px;margin-top:22px;border:0;border-radius:25px;background:#174b35;color:white;font-size:16px;font-weight:bold;cursor:pointer}
+.submit:hover{background:#28734d}
+#result{display:none;margin-top:18px;padding:12px;background:#e8f2e6;border-radius:10px;color:#174b35;line-height:1.6}
+.small{text-align:center;font-size:12px;color:#718075;margin-top:18px;line-height:1.6}
+footer{background:#102e24;color:white;text-align:center;padding:22px}
+@media(max-width:550px){header{justify-content:center;gap:15px}nav{justify-content:center;gap:12px}.box{padding:23px}.container{padding:28px 12px}.box h1{font-size:28px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">🌿 NatureBloom</div>
+ <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a></nav>
+</header>
+
+<div class="container">
+ <div class="box">
+  <h1 id="heading">Welcome Back 🌿</h1>
+  <p class="subtitle" id="subtitle">Login to your NatureBloom account.</p>
+  <div class="tabs">
+   <button type="button" class="active" id="loginTab" onclick="showForm('login')">Login</button>
+   <button type="button" id="registerTab" onclick="showForm('register')">Register</button>
+  </div>
+
+  <form class="form active" id="loginForm">
+   <label for="loginEmail">Email Address</label>
+   <input type="email" id="loginEmail" required placeholder="you@example.com">
+   <label for="loginPassword">Password</label>
+   <input type="password" id="loginPassword" minlength="6" required placeholder="Enter your password">
+   <button class="submit" type="submit">Login →</button>
+  </form>
+
+  <form class="form" id="registerForm">
+   <label for="fullName">Full Name</label>
+   <input type="text" id="fullName" required placeholder="Enter your name">
+   <label for="registerEmail">Email Address</label>
+   <input type="email" id="registerEmail" required placeholder="you@example.com">
+   <label for="registerPassword">Create Password</label>
+   <input type="password" id="registerPassword" minlength="6" required placeholder="At least 6 characters">
+   <label for="confirmPassword">Confirm Password</label>
+   <input type="password" id="confirmPassword" minlength="6" required placeholder="Repeat your password">
+   <button class="submit" type="submit">Create Account →</button>
+  </form>
+
+  <div id="result" role="status"></div>
+  <p class="small">Learning project only. This demo stores account details in your browser and is not secure for real users. Do not use a real password.</p>
+ </div>
+</div>
+
+<footer><p>© 2026 NatureBloom | Join our nature-loving community</p></footer>
+
+<script>
+function showForm(type){
+ const login=type==='login';
+ document.getElementById('loginForm').classList.toggle('active',login);
+ document.getElementById('registerForm').classList.toggle('active',!login);
+ document.getElementById('loginTab').classList.toggle('active',login);
+ document.getElementById('registerTab').classList.toggle('active',!login);
+ document.getElementById('heading').textContent=login?'Welcome Back 🌿':'Join NatureBloom 🌱';
+ document.getElementById('subtitle').textContent=login?'Login to your NatureBloom account.':'Create an account and grow with us.';
+ document.getElementById('result').style.display='none';
+}
+function getUsers(){
+ try{return JSON.parse(localStorage.getItem('natureBloomUsers')||'{}')}
+ catch(error){return {}}
+}
+function showResult(message){
+ const result=document.getElementById('result');
+ result.textContent=message;
+ result.style.display='block';
+}
+document.getElementById('registerForm').addEventListener('submit',function(event){
+ event.preventDefault();
+ const name=document.getElementById('fullName').value.trim();
+ const email=document.getElementById('registerEmail').value.trim().toLowerCase();
+ const password=document.getElementById('registerPassword').value;
+ const confirm=document.getElementById('confirmPassword').value;
+ if(password!==confirm){showResult('Passwords do not match. Please try again.');return}
+ const users=getUsers();
+ if(users[email]){showResult('This email is already registered in this browser. Please log in.');return}
+ users[email]={name:name,password:password};
+ localStorage.setItem('natureBloomUsers',JSON.stringify(users));
+ showResult('Registration successful, '+name+'! You can now log in.');
+ this.reset();
+});
+document.getElementById('loginForm').addEventListener('submit',function(event){
+ event.preventDefault();
+ const email=document.getElementById('loginEmail').value.trim().toLowerCase();
+ const password=document.getElementById('loginPassword').value;
+ const users=getUsers();
+ if(users[email]&&users[email].password===password){
+ showResult('Welcome back, '+users[email].name+'! Demo login successful.');
+ }else{
+ showResult('Account not found or password incorrect. Please check your details or register.');
+ }
+});
+</script>
+</body>
+</html>
+```

@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | NatureBloom</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f5f8f1;color:#263d2e}
+header{background:#174b35;padding:20px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.logo{font-size:26px;color:white;font-weight:bold}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:bold}
+nav a:hover{color:#b9ed9c}
+.hero{text-align:center;background:#dcebd7;padding:55px 7%}
+.hero h1{font-size:clamp(38px,6vw,55px);color:#174b35;margin-bottom:12px}
+.hero p{line-height:1.8}
+main{padding:50px 7%}
+.layout{display:grid;grid-template-columns:1fr 1.2fr;gap:35px;max-width:1100px;margin:auto}
+.info,.form-box{background:white;padding:30px;border-radius:18px;box-shadow:0 5px 20px #00000010}
+h2{color:#174b35;margin-bottom:18px}
+.info p{line-height:1.8;margin-bottom:20px;color:#617267}
+.info a{color:#28734d;text-decoration:none}
+label{display:block;font-weight:bold;margin:14px 0 7px}
+input,select,textarea{width:100%;padding:13px;border:1px solid #cbd8cd;border-radius:9px;font:inherit;background:#fbfdf9}
+input:focus,select:focus,textarea:focus{outline:2px solid #9ecb8a;border-color:#28734d}
+textarea{height:140px;resize:vertical}
+button{margin-top:18px;padding:14px 22px;border:0;border-radius:25px;background:#174b35;color:white;font-weight:bold;cursor:pointer}
+button:hover{background:#28734d}
+#result{margin-top:15px;color:#174b35;font-weight:bold;line-height:1.6}
+footer{background:#102e24;color:white;text-align:center;padding:25px}
+@media(max-width:750px){.layout{grid-template-columns:1fr}}
+@media(max-width:550px){header{justify-content:center;gap:15px}nav{justify-content:center;gap:12px}.hero{padding:40px 6%}main{padding:30px 5%}.info,.form-box{padding:22px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">🌿 NatureBloom</div>
+ <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a><a href="login.html">Login</a></nav>
+</header>
+
+<div class="hero">
+ <h1>Contact Us</h1>
+ <p>Have a question, idea or nature story? We would love to hear from you.</p>
+</div>
+
+<main>
+ <div class="layout">
+  <div class="info">
+   <h2>Let's Connect 🌱</h2>
+   <p>Thank you for visiting NatureBloom. Send us your suggestions, questions or ideas for making our planet greener.</p>
+   <p>📧 <strong>Email</strong><br><a href="mailto:hello@example.com">hello@example.com</a></p>
+   <p>🌍 <strong>Our mission</strong><br>Inspire people to explore and protect the natural world.</p>
+   <p>🌿 <strong>Stay connected</strong><br>Explore our gallery and discover more beautiful places.</p>
+   <a href="gallery.html">Explore the gallery →</a>
+  </div>
+
+  <div class="form-box">
+   <h2>Send a Message</h2>
+   <form id="contactForm">
+    <label for="name">Full Name</label>
+    <input id="name" name="name" type="text" placeholder="Enter your name" required>
+    <label for="email">Email Address</label>
+    <input id="email" name="email" type="email" placeholder="Enter your email" required>
+    <label for="subject">Subject</label>
+    <select id="subject" name="subject">
+     <option>General enquiry</option>
+     <option>Nature project</option>
+     <option>Feedback</option>
+     <option>Partnership</option>
+    </select>
+    <label for="message">Your Message</label>
+    <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+    <button type="submit">Send Message →</button>
+    <div id="result" role="status"></div>
+   </form>
+   <p style="margin-top:12px;font-size:13px;color:#617267">Demo form: no email is sent until a backend or form service is connected.</p>
+  </div>
+ </div>
+</main>
+
+<footer><p>© 2026 NatureBloom | Thank you for caring about nature</p></footer>
+<script>
+document.getElementById('contactForm').addEventListener('submit',function(event){
+ event.preventDefault();
+ const name=document.getElementById('name').value.trim();
+ document.getElementById('result').textContent='Thank you, '+name+'! Your form has been validated successfully. Connect a backend to send messages.';
+ this.reset();
+});
+</script>
+</body>
+</html>
+```
